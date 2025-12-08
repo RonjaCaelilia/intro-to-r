@@ -1,7 +1,7 @@
 ---
 title: Introduction to R
 subtitle: TU Dresden
-author: Sarah Zeller
+author: Sarah Listabarth
 format: 
   html: 
     self-contained: true
@@ -226,8 +226,8 @@ data(penguins)
 
 # Let's start this course
 
--   Download this repository: [https://github.com/sarahzeller/intro-to-r](https://github.com/sarahzeller/intro-to-r)
--   *unzip*/*extract* it and save it somewhere
--   double-click on the `.Rproj`
--   open *01-Introduction/01-Quarto-Exercises.qmd*
--   follow the instructions
+```{webr}
+install.packages("usethis")
+library(usethis)
+use_course("https://tinyurl.com/intro-r-tud")
+```
