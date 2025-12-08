@@ -1,5 +1,5 @@
 ---
-author: Sarah Zeller
+author: Sarah Listabarth
 title: Starting your journey with `R`
 subtitle: How to set up your `R` projects
 

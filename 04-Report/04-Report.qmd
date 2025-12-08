@@ -1,6 +1,6 @@
 ---
 title: Create your own quarto doc
-author: Sarah Zeller
+author: Sarah Listabarth
 subtitle: TUD
 
 format: 

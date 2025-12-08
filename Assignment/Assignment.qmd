@@ -1,7 +1,7 @@
 ---
 title: Assignment
 subtitle: Introduction to R
-author: Sarah Zeller, TU Dresden
+author: Sarah Listabarth, TU Dresden
 
 format: pdf
 
@@ -17,8 +17,8 @@ The data used for the assignment are obtained from the `LondonMarathon` package 
 Please work in teams of 4 students.
 
 
-Please hand in your entire `R` project, including the datasets, in a zipped folder, via e-mail to [sarah.zeller@tu-dresden.de](mailto:sarah.zeller@tu-dresden.de).
-The deadline is 31 December 2024, 11.59 PM.
+Please hand in your entire `R` project, including the datasets, in a zipped folder, via e-mail to [sarah.listabarth@tu-dresden.de](mailto:sarah.listabarth@tu-dresden.de).
+The deadline is 31 December 2025, 11.59 PM.
 The `.qmd` document needs to render without an error.
 
 Please follow these steps.
