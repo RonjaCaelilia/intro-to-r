@@ -105,7 +105,16 @@ Use `|>` to write a sequence of functions that:
 
 ```
 
-## Your Turn 6 will be part of the next lecture
+## Your Turn 6 
+1. Trim babynames to just the rows that contain your name
+and your sex
+2. Trim the result to just the columns that will appear in
+your graph (not strictly necessary, but useful practice)
+3. Plot the results as a line graph with year on the x axis
+and prop on the y axis
+```{r}
+
+```
 
 
 ## Your Turn 7
@@ -137,7 +146,14 @@ babynames |>
   _______(desc(_____))
 ```
  
-## Your Turn 9 will be part of next lecture
+## Your Turn 9 
+Use group_by() to calculate the total number
+of children born for every year.
+Plot the results as a line graph: total vs. year.
+```{r}
+
+```
+
 
 
 ## Your Turn 10
