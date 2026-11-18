@@ -1,0 +1,263 @@
+---
+title: Prettify Graphs
+author: Sarah Listabarth, Ronja Huhn 
+subtitle: TUD
+
+format:
+  revealjs:
+    self-contained: true
+    scrollable: true      
+    code-overflow: wrap 
+  html:
+    self-contained: true
+
+execute:
+  echo: true
+  warning: false
+---
+
+
+# Why pretty data visualizations
+
+- are more engaging
+- help to tell your story
+
+# What makes a good plot
+
+- clear and concise
+- informative
+- aesthetically pleasing
+
+::: {.callout-note}
+The answer depends on the data and the audience.
+:::
+
+**Best way to go:** start with a basic plot and then add layers to it.
+
+# Adding layers to your plot
+
+- Theme
+- Legend appearance
+- Scales
+- Annotations
+
+# Task (3 min)
+
+Install the needed packages and load our data
+
+ - Run in console: install.packages("gapminder"), install.packages("scales"),  install.packages("ggrepel") , install.packages("RColorBrewer")
+ 
+ - Load the packages
+ - Have a first look at our data
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+library(gapminder)
+library(scales)
+library(ggrepel)
+library(RColorBrewer)
+```
+
+ 
+```{r}
+#| eval: false
+data(gapminder)
+gapminder |> head()
+```
+
+
+# Themes
+
+- Best only include what you really need.
+- With themes you can exclude grid lines, axis labels, etc.
+
+## Task (5 min)
+Use the cheat sheet in 02- Visualizations and try out different themes. Choose the one you like the most.
+```{r}
+gapminder_plot <-
+  gapminder |>
+  filter(year == 2007) |>
+  ggplot() +
+  geom_point(aes(x = gdpPercap, y = lifeExp, color = continent))
+
+gapminder_plot +
+  theme_classic()
+```
+
+
+
+## Task (10 min)
+Use `?theme` to find out how to:
+
+- Change the text size
+- Change the background colour
+- Change the legend position
+
+```{r}
+#| label: task-theme
+gapminder_plot +
+  theme()
+```
+
+
+## Possible solution
+
+```{r}
+gapminder_plot +
+  theme(text = element_text(size = 14), 
+        panel.background = element_rect(fill="blue"), 
+        legend.position = "bottom")
+```
+
+
+
+# Scales and Colours
+
+## Which colours to use?
+
+- **Fit:** use colours that fit the data and the message you want to convey.
+- **Accessibility:** use colours that are distinguishable for people with colour vision deficiencies.
+- **Colour harmony:** use colours that are aesthetically pleasing together.
+
+## Different scales
+
+- **Sequential:** one hue, light to dark → continuous data
+- **Qualitative:** different hues → categorical data
+- **Diverging:** two hues, light to dark → continuous data with a midpoint
+
+**Useful link:** [ggplot](https://ggplot2-book.org/scales-guides.html)
+
+**Useful packages:** `viridis`, `RColorBrewer`
+
+## Choosing a colour scale
+
+You can choose from the given scales:
+
+- `scale_colour_continuous()` / `scale_colour_discrete()`
+- `scale_colour_brewer()`
+- `scale_colour_viridis_d()`
+- ...
+
+Or you can set the colour values manually: 
+
+- `scale_colour_manual()`
+
+The gapminder package comes with its own colours: continent_colors
+
+
+## Task (5 min)
+
+Play around with the different colour palettes, be careful to check which type of scale you need to use
+
+```{r}
+gapminder_plot 
+```
+
+
+## Possible solution
+```{r}
+gapminder_plot +
+  scale_colour_brewer(type = "qual", palette = "Set2")
+
+data(continent_colors)
+
+gapminder_plot +
+  scale_colour_manual(values = continent_colors)
+
+```
+
+
+
+
+
+## Changing other scales
+Not only colours but also a suitable number format can improve readability
+
+?scale_x_continuous, scale_x_discrete
+
+## Task (10 min)
+- Limit the x-Axis to 40,0000 
+- Change the scale to a label_comma
+
+```{r}
+gapminder_plot 
+```
+
+
+## Possible solution
+
+```{r}
+gapminder_plot +
+  scale_x_continuous(limits = c(0,40000), 
+                     labels = scales::label_comma())
+```
+
+
+
+# Annotations
+Basic annotations:
+
+- Titles: Describe the content of the plot
+- Labels: Describe the axes
+- Captions: Describe the plot, e.g. the data source
+
+Additional annotations:
+
+- Text and Highlighting: Describing data points/areas directly
+
+We can use the ggrepel package to add labels, and specifically the function
+geom_label_repel.
+
+```{r}
+labelled_countries <- gapminder |>
+  filter(year == 2007) |>
+  filter(lifeExp == max(lifeExp) | lifeExp == min(lifeExp))
+```
+
+```{r}
+gapminder_plot +
+  geom_label_repel(data = labelled_countries,
+aes(
+label = country,
+x = gdpPercap,
+y = lifeExp,
+col = continent
+),
+show.legend = FALSE)
+```
+
+
+## Task (5min)
+Instead of min and max, highlight the country with the highest lifeExp in each continent in 2007
+
+```{r}
+#labelled_countries_per_continent 
+```
+
+```{r}
+gapminder_plot
+```
+
+
+## Possible solution
+```{r}
+labelled_countries_per_continent <- gapminder |>
+  filter(year == 2007)|>
+  group_by(continent)|>
+  filter(lifeExp == max(lifeExp))|>
+  ungroup()
+
+gapminder_plot +
+  geom_label_repel(data = labelled_countries_per_continent,
+aes(
+label = country,
+x = gdpPercap,
+y = lifeExp,
+col = continent
+),
+show.legend = FALSE)
+
+```
+

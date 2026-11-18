@@ -31,6 +31,13 @@ filters:
 
 ![](images/data-science-explore.png)
 
+
+# Why Focus on Data Visualization?
+
+- its a key part of data analysis
+- helps to understand the data
+- helps to communicate the data
+
 # Why R?
 
 - beginner-friendly programming language

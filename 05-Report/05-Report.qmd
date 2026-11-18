@@ -1,11 +1,9 @@
 ---
 title: Create your own quarto doc
-author: Sarah Listabarth
+author: Sarah Listabarth, Ronja Huhn
 subtitle: TUD
 
 format: 
-  revealjs:
-    self-contained: true
   html: 
     self-contained: true
 
@@ -21,10 +19,9 @@ bibliography:
 
 # What's in a `Quarto` documentation?
 
--   Documentation (markdown text)
--   Code
--   Graphs
--   (Tables)
+- Documentation (markdown text)
+- Code
+- Graphs
 
 # Documentation
 
@@ -32,23 +29,21 @@ bibliography:
 
 ## Credits
 
--   Describing data sources
--   Citing used packages 
+- Describing data sources
+- Citing used packages
 
 ```{r}
 #| eval: false
 grateful::cite_packages(output = "table", out.dir = ".") |> 
   kableExtra::kable()
 
-grateful::cite_packages(output = "paragraph", out.dir = ".")
+grateful::cite_packages(pkgs = "ggplot2", output = "paragraph", out.dir = ".")
 ```
-
 
 ## Thought processes
 
--   Describe why you change your data: like commenting
--   Describe your results: How can this graph be interpreted?
--   What are limitations?
+- Describe why you change your data: like commenting
+- Describe your graph: How can this graph be interpreted?
 
 # Code
 
@@ -72,13 +67,13 @@ subset <- penguins |> filter(island == "Dream")
 
 When you want to use results from a code chunk directly in the text, you can use this syntax:
 
-\`&#8203; r 1+1\`
+<code>Today is \`{r} Sys.Date()\`</code>
 
+test: Today is `{r} Sys.Date()`.
 
 # Graphs
 
 ![Artwork by Allison Horst](https://cdn.myportfolio.com/45214904-6a61-4e23-98d6-b140f8654a40/596ce690-7bab-4a5f-b319-e0e0c79d8a22_rw_3840.png?h=ca2c682852a4cc3ed2a2a34393220e55)
-
 
 ## Theme options
 
@@ -106,4 +101,3 @@ penguins |>
        caption = "Data source: {palmerpenguins}")
   
 ```
-

@@ -2,6 +2,13 @@
 title: "Visualize Data"
 ---
 
+## Libraries
+```{r}
+library(tidyverse)
+library(ggplot2)
+library(here)
+```
+
 ## Your Turn 0
 
 Add a setup chunk that loads the tidyverse packages.
@@ -109,6 +116,8 @@ p <- ggplot(mpg) +
 
 library(plotly)
 ggplotly(p)
+#ggsave(here("04-Visualize/plot.pdf"), p)
+#htmlwidgets::saveWidget(config(ggplotly(p), showLink = T), here("04-Visualize/graph.html"))
 ```
 
 ***

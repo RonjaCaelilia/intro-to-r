@@ -105,19 +105,13 @@ Use `|>` to write a sequence of functions that:
 
 ```
 
-## Your Turn 6 - Exam
+## Your Turn 6 will be part of the next lecture
 
-1. Trim `babynames` to just the rows that contain your `name` and your `sex`  
-2. Trim the result to just the columns that will appear in your graph (not strictly necessary, but useful practice)  
-3. Plot the results as a line graph with `year` on the x axis and `prop` on the y axis
-
-```{r}
-
-```
 
 ## Your Turn 7
 
 Copmplete the code below to extract the rows where `name == "Khaleesi"`. Then use `summarise()` and `sum()` and `min()` to find:
+Than repeat this with your name. 
 
 1. The total number of children named Khaleesi
 2. The first year Khaleesi appeared in the data
@@ -132,7 +126,7 @@ babynames ___
 
 ## Your Turn 8
 
-Use `group_by()`, `summarise()`, and `arrange()` to display the ten most popular names. Compute popularity as the *total* number of children of a single gender given a name.
+Use `group_by()`, `summarise()`, and `arrange()` to display the most popular names. Compute popularity as the *total* number of children of a single gender given a name.
 
 *(Hint: Be sure to remove each `_` before running the code)*
 
@@ -142,14 +136,9 @@ babynames |>
   _______(total = _____(n)) |> 
   _______(desc(_____))
 ```
+ 
+## Your Turn 9 will be part of next lecture
 
-## Your Turn 9
-
-Use `group_by()` to calculate and then plot the total number of children born each year over time.
-
-```{r}
-
-```
 
 ## Your Turn 10
 
@@ -159,7 +148,7 @@ Use `mutate()` and `min_rank()`to rank each row in babynames from _largest_ n to
 
 ```{r}
 babynames |> 
-  ______(rank = _______(____(prop)))
+  ______(rank = _______(____(n)))
 ```
 
 ## Your Turn 11
